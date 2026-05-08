@@ -34,7 +34,17 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          if [[ "$REPO_NAME" == *.github.io ]]; then
+            export PUBLIC_BASE_PATH="/"
+          else
+            export PUBLIC_BASE_PATH="/${REPO_NAME}/"
+          fi
+          echo "PUBLIC_BASE_PATH=$PUBLIC_BASE_PATH"
+          pnpm build
 
       - name: Add .nojekyll
         run: touch dist/.nojekyll
