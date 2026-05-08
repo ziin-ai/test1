@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ziin.ai</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><style>.markdown-viewer{color:var(--color-fg);line-height:1.75;font-size:.98rem}.markdown-viewer h2{margin-top:1.4rem;margin-bottom:.55rem;font-size:1.25rem;font-weight:700;letter-spacing:-.01em}.markdown-viewer h3{margin-top:1.2rem;margin-bottom:.45rem;font-size:1.08rem;font-weight:600}.markdown-viewer p{margin:.55rem 0;color:color-mix(in oklab,var(--color-fg) 92%,white 8%)}.markdown-viewer a{color:var(--color-info);text-decoration:underline;text-underline-offset:2px}.markdown-viewer ul,.markdown-viewer ol{margin:.65rem 0 .8rem;padding-left:1.2rem}.markdown-viewer ul{list-style:disc}.markdown-viewer ol{list-style:decimal}.markdown-viewer li{margin:.28rem 0}.markdown-viewer blockquote{margin:.9rem 0;border-left:3px solid var(--color-info);padding-left:.8rem;color:color-mix(in oklab,var(--color-fg) 80%,white 20%)}.markdown-viewer iframe{margin-top:.8rem;width:100%;border:1px solid color-mix(in oklab,var(--color-fg) 18%,transparent);border-radius:.75rem}
+</style>
+<link rel="stylesheet" href="/_astro/Base.Bj6Fx19r.css"></head> <body class="antialiased"> <div class="bg-secondary/80 px-4 py-2 dark:bg-secondary/70"> <div class="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-x-6 gap-y-1 font-mono text-xs"> <div class="flex items-center gap-1.5"> <span class="text-slate-600 dark:text-slate-300">KOSPI</span> <span class="font-semibold">0</span> <span class="text-warning">  0.00%
+</span> </div><div class="flex items-center gap-1.5"> <span class="text-slate-600 dark:text-slate-300">KOSDAQ</span> <span class="font-semibold">0</span> <span class="text-warning">  0.00%
+</span> </div><div class="flex items-center gap-1.5"> <span class="text-slate-600 dark:text-slate-300">S&amp;P 500</span> <span class="font-semibold">0</span> <span class="text-warning">  0.00%
+</span> </div><div class="flex items-center gap-1.5"> <span class="text-slate-600 dark:text-slate-300">USD/KRW</span> <span class="font-semibold">0</span> <span class="text-warning">  0.00%
+</span> </div><div class="flex items-center gap-1.5"> <span class="text-slate-600 dark:text-slate-300">VIX</span> <span class="font-semibold">0</span> <span class="text-warning">  0.00%
+</span> </div> </div> </div> <header class="border-b border-slate-300/60 px-4 py-2.5 dark:border-slate-700/60"> <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4"> <div class="flex items-center gap-8"> <a href="/" class="text-[1.85rem] font-sans font-bold tracking-[-0.02em] leading-none"> <span>지인</span><span class="text-info">.ai</span> </a> <nav class="hidden items-center gap-6 text-sm font-medium tracking-tight md:flex"> <a href="/" class="text-slate-700 transition hover:text-info dark:text-slate-300"> 대시보드 </a><a href="/posts" class="text-slate-700 transition hover:text-info dark:text-slate-300"> 분석글 </a><a href="/timeline" class="text-slate-700 transition hover:text-info dark:text-slate-300"> 타임라인 </a> </nav> </div> <div class="flex items-center gap-2 text-sm"> <span id="kst-time" class="font-mono text-slate-600 dark:text-slate-300">KST --:--:--</span> <span class="rounded-full bg-danger px-2 py-0.5 text-xs font-semibold text-white">LIVE</span> </div> </div> </header> <script>
+  const timeEl = document.getElementById("kst-time");
+  const formatter = new Intl.DateTimeFormat("ko-KR", {
+    timeZone: "Asia/Seoul",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
+
+  const updateKstTime = () => {
+    if (!timeEl) return;
+    timeEl.textContent = `KST ${formatter.format(new Date())}`;
+  };
+
+  updateKstTime();
+  setInterval(updateKstTime, 1000);
+</script> <main class="mx-auto w-full max-w-6xl px-4 py-6">  <section class="grid grid-cols-1 gap-6 lg:grid-cols-3"> <article class="prose prose-slate max-w-none rounded-xl border border-slate-300/70 bg-white p-6 dark:prose-invert dark:border-slate-700/70 dark:bg-slate-900 lg:col-span-2"> <h1 class="mb-2 font-sans text-3xl font-semibold tracking-tight">CPO(광통신) 전환: AI 인프라의 다음 병목을 푸는가</h1> <p class="text-sm text-slate-500">THEME · 2026. 3. 11.</p> <div class="not-prose mt-3 flex items-center justify-end"> <button type="button" class="rounded border border-slate-300 px-2 py-1 text-xs text-slate-600 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800" aria-expanded="true" aria-controls="post-body-2026-05-12-cpo-optical-interconnect" data-post-body-toggle="post-body-2026-05-12-cpo-optical-interconnect">
+상세 내용 숨기기
+</button> </div> <div id="post-body-2026-05-12-cpo-optical-interconnect" class="mt-3" data-post-body-content> <article class="markdown-viewer" data-astro-cid-5xqydjlk> <h2 id="한-줄-결론">한 줄 결론</h2>
+<p>CPO는 “언젠가 올 기술”이 아니라 이미 전력·열·대역폭 문제를 맞닥뜨린 AI 클러스터에서 현실적인 대안으로 올라왔다<span title="src-datacenter-power" class="mx-0.5 inline-flex max-w-[220px] truncate rounded border border-info/40 bg-info/10 px-1.5 py-0.5 text-xs text-info">src-datacenter-power</span>.<br>
+다만 현재는 상용화의 초입이며, 표준·수율·테스트 체인이 따라오지 못하면 기대 대비 도입 속도는 완만할 수 있다<span title="src-contra-cpo-yield" class="mx-0.5 inline-flex max-w-[220px] truncate rounded border border-info/40 bg-info/10 px-1.5 py-0.5 text-xs text-info">src-contra-cpo-yield</span>.</p>
+<p>링크로 공유된 2026년 가이드 관점에서도 핵심은 동일하다:<br>
+“성능 스펙”보다 전력/TCO 관점에서 CPO 도입 논리가 먼저 성립한다<span title="src-cpo-sunshout-2026" class="mx-0.5 inline-flex max-w-[220px] truncate rounded border border-info/40 bg-info/10 px-1.5 py-0.5 text-xs text-info">src-cpo-sunshout-2026</span>.</p>
+<h2 id="왜-지금-cpo인가">왜 지금 CPO인가</h2>
+<ol>
+<li>AI 학습/추론 클러스터가 커질수록 전기 신호 기반 인터커넥트의 전력 손실 부담이 커진다<span title="src-datacenter-power" class="mx-0.5 inline-flex max-w-[220px] truncate rounded border border-info/40 bg-info/10 px-1.5 py-0.5 text-xs text-info">src-datacenter-power</span>.</li>
+<li>광 신호를 패키지 근처로 끌어오면 대역폭/전력 효율 측면의 구조적 이점이 생긴다<span title="src-cpo-standard" class="mx-0.5 inline-flex max-w-[220px] truncate rounded border border-info/40 bg-info/10 px-1.5 py-0.5 text-xs text-info">src-cpo-standard</span>.</li>
+<li>주요 생태계 플레이어가 표준 논의에 적극 참여하면서 구현 경로가 구체화되고 있다<span title="src-cpo-standard" class="mx-0.5 inline-flex max-w-[220px] truncate rounded border border-info/40 bg-info/10 px-1.5 py-0.5 text-xs text-info">src-cpo-standard</span>.</li>
+<li>2026년 로드맵 관측치 기준, 시장은 “파일럿 -> 스케일업”으로 전환 중이며 대역폭 확장(예: 6.4T, 12.8T) 기대가 이미 밸류에 반영되기 시작했다<span title="src-cpo-sunshout-2026" class="mx-0.5 inline-flex max-w-[220px] truncate rounded border border-info/40 bg-info/10 px-1.5 py-0.5 text-xs text-info">src-cpo-sunshout-2026</span>.</li>
+</ol>
+<h2 id="아직-남은-리스크">아직 남은 리스크</h2>
+<ul>
+<li>패키징 수율과 테스트 복잡도가 초기 원가를 높일 수 있다<span title="src-contra-cpo-yield" class="mx-0.5 inline-flex max-w-[220px] truncate rounded border border-info/40 bg-info/10 px-1.5 py-0.5 text-xs text-info">src-contra-cpo-yield</span>.</li>
+<li>세대 전환기에는 기존 광모듈 체계와의 혼재 비용이 발생할 수 있다.</li>
+<li>고객사 도입 결정은 성능보다 “총소유비용(TCO) + 공급 안정성”에 좌우될 가능성이 높다.</li>
+<li>미디어/리서치 수치가 과도하게 낙관적으로 인용될 수 있어, 실제 상용 구축 수치와 분리해 해석해야 한다<span title="src-cpo-sunshout-2026" class="mx-0.5 inline-flex max-w-[220px] truncate rounded border border-info/40 bg-info/10 px-1.5 py-0.5 text-xs text-info">src-cpo-sunshout-2026</span>.</li>
+</ul>
+<h2 id="체크리스트">체크리스트</h2>
+<ul>
+<li>주요 벤더의 CPO 로드맵 일정 변동</li>
+<li>패키징 수율/테스트 시간 개선 추세</li>
+<li>상용 레퍼런스 디자인 공개 여부</li>
+<li>실제 대형 고객사의 채택 사례 증가 속도</li>
+</ul>
+<h2 id="인용-예시">인용 예시</h2>
+<p>직접 URL 포함 cite: {{cite:cpo-external|<a href="https://example.com/deep-dive/cpo-optical-roadmap%7D%7D">https://example.com/deep-dive/cpo-optical-roadmap}}</a></p> </article> </div> </article> <aside class="space-y-4 rounded-xl border border-slate-300/70 bg-white p-4 shadow-sm dark:border-slate-700/70 dark:bg-slate-900"> <section class="rounded-lg bg-secondary/35 p-3"> <p class="text-xs text-slate-500 dark:text-slate-300">신뢰도 점수</p> <p class="mt-1 text-2xl font-semibold">8.00 / 10</p> </section> <section> <p class="mb-2 text-sm font-semibold">Tier 분포</p> <div class="h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700"> <div class="flex h-full"> <div class="bg-info" style="width:50%"></div> <div class="bg-success" style="width:25%"></div> <div class="bg-warning" style="width:0%"></div> <div class="bg-slate-500" style="width:0%"></div> <div class="bg-danger" style="width:25%"></div> </div> </div> </section> <section> <p class="mb-2 text-sm font-semibold">최근 인용 출처</p> <ul class="space-y-2 text-sm"> <li class="rounded bg-secondary/35 px-2 py-2"> <a href="https://example.com/news/cpo-packaging-yield-risk" target="_blank" class="line-clamp-1 hover:text-info">
+[src-contra-cpo-yield] Packaging Yield Concerns in Early CPO Deployments </a> </li><li class="rounded bg-secondary/35 px-2 py-2"> <a href="https://example.com/standards/cpo-2026-update" target="_blank" class="line-clamp-1 hover:text-info">
+[src-cpo-standard] Co-Packaged Optics Industry Standard Update 2026 </a> </li><li class="rounded bg-secondary/35 px-2 py-2"> <a href="https://example.com/research/datacenter-power-density-2026" target="_blank" class="line-clamp-1 hover:text-info">
+[src-datacenter-power] Datacenter Power Density Outlook </a> </li><li class="rounded bg-secondary/35 px-2 py-2"> <a href="https://sunshout.tistory.com/2158" target="_blank" class="line-clamp-1 hover:text-info">
+[src-cpo-sunshout-2026] AI 데이터센터 전력비 73% 절감의 비밀: CPO 가이드 2026 </a> </li> </ul> </section> </aside> </section>  </main> <footer class="mt-10 border-t border-slate-300/60 px-4 py-6 text-sm text-slate-600 dark:border-slate-700/60 dark:text-slate-300"> <div class="mx-auto flex w-full max-w-6xl flex-col gap-2"> <p>면책 고지: 본 사이트의 모든 내용은 투자 참고 정보이며, 투자 손익의 책임은 투자자 본인에게 있습니다.</p> <p>출처 재검증 안내: 주요 출처는 정기적으로 재검토되며, 반박 근거와 함께 변경 이력이 기록됩니다.</p> <p>© 2026 ziin.ai. All rights reserved.</p> </div> </footer> </body></html> <script>
+  (() => {
+    const toggles = document.querySelectorAll("[data-post-body-toggle]");
+    toggles.forEach((toggle) => {
+      if (!(toggle instanceof HTMLButtonElement)) return;
+      const targetId = toggle.dataset.postBodyToggle;
+      if (!targetId) return;
+      const content = document.getElementById(targetId);
+      if (!(content instanceof HTMLElement)) return;
+      toggle.addEventListener("click", () => {
+        const isHidden = content.classList.toggle("hidden");
+        toggle.textContent = isHidden ? "상세 내용 보이기" : "상세 내용 숨기기";
+        toggle.setAttribute("aria-expanded", isHidden ? "false" : "true");
+      });
+    });
+  })();
+</script>

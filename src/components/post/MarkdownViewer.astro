@@ -1,0 +1,78 @@
+---
+interface Props {
+  Content: any;
+  components?: Record<string, any>;
+}
+
+const { Content, components = {} } = Astro.props;
+---
+
+<article class="markdown-viewer">
+  <Content components={components} />
+</article>
+
+<style>
+  :global(.markdown-viewer) {
+    color: var(--color-fg);
+    line-height: 1.75;
+    font-size: 0.98rem;
+  }
+
+  :global(.markdown-viewer h2) {
+    margin-top: 1.4rem;
+    margin-bottom: 0.55rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  :global(.markdown-viewer h3) {
+    margin-top: 1.2rem;
+    margin-bottom: 0.45rem;
+    font-size: 1.08rem;
+    font-weight: 600;
+  }
+
+  :global(.markdown-viewer p) {
+    margin: 0.55rem 0;
+    color: color-mix(in oklab, var(--color-fg) 92%, white 8%);
+  }
+
+  :global(.markdown-viewer a) {
+    color: var(--color-info);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  :global(.markdown-viewer ul),
+  :global(.markdown-viewer ol) {
+    margin: 0.65rem 0 0.8rem;
+    padding-left: 1.2rem;
+  }
+
+  :global(.markdown-viewer ul) {
+    list-style: disc;
+  }
+
+  :global(.markdown-viewer ol) {
+    list-style: decimal;
+  }
+
+  :global(.markdown-viewer li) {
+    margin: 0.28rem 0;
+  }
+
+  :global(.markdown-viewer blockquote) {
+    margin: 0.9rem 0;
+    border-left: 3px solid var(--color-info);
+    padding-left: 0.8rem;
+    color: color-mix(in oklab, var(--color-fg) 80%, white 20%);
+  }
+
+  :global(.markdown-viewer iframe) {
+    margin-top: 0.8rem;
+    width: 100%;
+    border: 1px solid color-mix(in oklab, var(--color-fg) 18%, transparent);
+    border-radius: 0.75rem;
+  }
+</style>

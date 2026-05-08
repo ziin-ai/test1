@@ -1,0 +1,107 @@
+---
+import Panel from "../ui/Panel.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+
+function extractYoutubeId(url?: string): string | undefined {
+  if (!url) return undefined;
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes("youtube.com")) {
+      const id = parsed.searchParams.get("v");
+      return id ?? undefined;
+    }
+    if (parsed.hostname === "youtu.be") {
+      const id = parsed.pathname.replace("/", "").trim();
+      return id || undefined;
+    }
+  } catch {
+    return undefined;
+  }
+  return undefined;
+}
+
+const youtubeId = extractYoutubeId(post.data.youtubeUrl);
+const youtubeEmbedUrl = youtubeId ? `https://www.youtube.com/embed/${youtubeId}` : undefined;
+type YoutubeOEmbed = {
+  title?: string;
+  author_name?: string;
+  author_url?: string;
+  thumbnail_url?: string;
+};
+
+let youtubeMeta: YoutubeOEmbed | undefined;
+if (post.data.youtubeUrl) {
+  try {
+    const oembedUrl = `https://www.youtube.com/oembed?url=${encodeURIComponent(post.data.youtubeUrl)}&format=json`;
+    const res = await fetch(oembedUrl, {
+      headers: { "User-Agent": "Mozilla/5.0" },
+    });
+    if (res.ok) {
+      youtubeMeta = (await res.json()) as YoutubeOEmbed;
+    } else {
+      const fallbackUrl = `https://noembed.com/embed?url=${encodeURIComponent(post.data.youtubeUrl)}`;
+      const fallbackRes = await fetch(fallbackUrl);
+      if (fallbackRes.ok) {
+        youtubeMeta = (await fallbackRes.json()) as YoutubeOEmbed;
+      }
+    }
+  } catch {
+    // Keep metadata empty when oEmbed fetch fails.
+  }
+}
+---
+
+<Panel variant="soft">
+  <div class="mt-2">
+    {youtubeEmbedUrl ? (
+      <>
+        <div class="aspect-video overflow-hidden rounded-lg border border-slate-200 bg-black dark:border-slate-700">
+          <iframe
+            src={youtubeEmbedUrl}
+            title={`${youtubeMeta?.title ?? "YouTube"} embed`}
+            loading="lazy"
+            class="h-full w-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          />
+        </div>
+        {post.data.youtubeUrl && (
+          <div class="mt-1 flex items-center gap-3 text-[10px]">
+            <a
+              href={post.data.youtubeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex text-info hover:underline"
+            >
+              YouTube 원본 열기
+            </a>
+            {youtubeMeta?.author_url && (
+              <a
+                href={youtubeMeta.author_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex text-slate-500 hover:underline dark:text-slate-300"
+              >
+                채널 보기
+              </a>
+            )}
+          </div>
+        )}
+      </>
+    ) : (
+      <div class="rounded border border-dashed border-slate-300 bg-slate-50 px-2 py-3 text-[11px] text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
+        이 post에 연결된 YouTube 정보가 없습니다. frontmatter에 `youtubeUrl`을 추가하면 자동 임베드됩니다.
+      </div>
+    )}
+    {youtubeEmbedUrl && !youtubeMeta?.title && (
+      <p class="mt-1 text-[10px] text-amber-600 dark:text-amber-400">YouTube 메타데이터를 자동 조회하지 못했습니다.</p>
+    )}
+  </div>
+</Panel>
